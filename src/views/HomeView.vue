@@ -1,43 +1,32 @@
 <template>
   <div class="home">
     <HeaderShayna />
-    <!-- Hero Section Begin -->
-    <section class="hero-section">
-      <carousel class="hero-items" :items="1" :nav="false">
-        <div
-          class="single-hero-items set-bg"
-          style="background-image: url('/img/hero-1.jpg')"
-        >
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-5">
-                <span>Bag,kids</span>
-                <h1>Black friday</h1>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore
-                </p>
-                <a href="#" class="primary-btn">Shop Now</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </carousel>
-    </section>
-    <!-- Hero Section End -->
+    <HeroShayna />
+    <BannerShayna />
+    <InstaShayna />
+    <PartnerShayna />
+    <FooterShayna />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HeaderShayna from "@/components/HeaderShayna.vue";
-import carousel from "vue-owl-carousel";
+import HeroShayna from "@/components/HeroShayna.vue";
+import BannerShayna from "@/components/BannerShayna.vue";
+import InstaShayna from "@/components/InstaShayna.vue";
+import PartnerShayna from "@/components/PartnerShayna.vue";
+import FooterShayna from "@/components/FooterShayna.vue";
 
 export default {
   name: "HomeView",
   components: {
     HeaderShayna,
-    carousel,
+    HeroShayna,
+    BannerShayna,
+    InstaShayna,
+    PartnerShayna,
+    FooterShayna,
   },
 };
 </script>
