@@ -54,7 +54,7 @@
                             </div>
                           </td>
                           <td
-                            @click="removeItem(keranjangUser.index)"
+                            @click="removeItem(keranjang.id)"
                             class="si-close"
                           >
                             <i class="ti-close"></i>
@@ -70,7 +70,7 @@
                   </div>
                   <div class="select-total">
                     <span>total:</span>
-                    <h5>$120.00</h5>
+                    <h5>${{ totalHarga }}.00</h5>
                   </div>
                   <div class="select-button">
                     <router-link
@@ -100,10 +100,19 @@ export default {
     };
   },
   methods: {
-    removeItem(index) {
+    removeItem(idx) {
+      let keranjangUserStorage = JSON.parse(
+        localStorage.getItem("keranjangUser")
+      );
+      let itemKeranjangUserStorage = keranjangUserStorage.map(
+        (itemKeranjangUserStorage) => itemKeranjangUserStorage.id
+      );
+      let index = itemKeranjangUserStorage.findIndex((id) => id == idx);
       this.keranjangUser.splice(index, 1);
+
       const parsed = JSON.stringify(this.keranjangUser);
       localStorage.setItem("keranjangUser", parsed);
+      window.location.reload();
     },
   },
   mounted() {
@@ -114,6 +123,13 @@ export default {
         localStorage.removeItem("keranjangUser");
       }
     }
+  },
+  computed: {
+    totalHarga() {
+      return this.keranjangUser.reduce(function (items, data) {
+        return items + data.price;
+      }, 0);
+    },
   },
 };
 </script>
